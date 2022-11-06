@@ -2,7 +2,6 @@ import requests
 import asyncio
 import aiohttp
 import datetime
-import time
 from flask import Flask, render_template, request, url_for, redirect
 
 app = Flask(__name__)
@@ -34,9 +33,6 @@ def match(match_id, t):
 
 @app.route("/player/<int:player_id>")
 def player(player_id):
-    # TODO: Connect to database (TBC)
-    # TODO: Check if pid exists in database. Else, call API (TBC)
-    # TODO: If pid exists, check timestamp. If within 7 days, use from database else, API call. (TBC)
     hero, games, wins = get_recommended_hero(player_id)
     losses = games-wins
     win_rate = "{:.2%}".format(get_division(wins, games))
@@ -51,7 +47,6 @@ def player(player_id):
 
 
 def get_leaderboard(mid=None, t=None):
-    start = time.time()
     res = requests.get(f"https://api.opendota.com/api/matches/{mid}")
     data = res.json()['players']
 
@@ -78,8 +73,6 @@ def get_leaderboard(mid=None, t=None):
     leaderboard_keys = sorted(rankings, key=rankings.get, reverse=True)
     for k in leaderboard_keys:
         leaderboard.append((k, "{:.2%}".format(rankings[k])))
-
-    print("Time of execution:", time.time() - start)
 
     # handle anonymous players
     if unknown_players > 0:
@@ -149,9 +142,6 @@ def get_recommended_hero(pid=None):
             max_confidence = max(max_confidence, confidence_level)
             hero_id = int(data[i]['hero_id'])
             index = i
-
-    # hero_id = int(data['hero_id'])
-    print("Time of execution:", time.time() - start)
 
     # retrieve hero name
     res = requests.get("https://api.opendota.com/api/heroes")
