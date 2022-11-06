@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Healint Hero Recommendation</title>
+{% endblock %}
+
+{% block body %}
+<div align="middle">
+    <h2>Hero Recommendation</h2>
+    <br>
+    <h5>Recommended Hero for Account <u>{{ player_id }}</u>:</h5> <h3 class="text-success">{{ hero }}</h3>
+    <h5>Total No. of Games Played with {{ hero }}:</h5> <h3 class="text-success">{{ games }}</h3>
+    <h5>Win Rate with {{ hero }}:</h5> <h3 class="text-success">{{ win_rate }}</h3>
+    <h5>Won Games with {{ hero }}:</h5> <h3 class="text-success">{{ wins }}</h3>
+    <h5>Lost Games with {{ hero }}:</h5> <h3 class="text-danger">{{ losses }}</h3>
+</div>
+{% endblock %}

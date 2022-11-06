@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Healint OpenDota API FlaskApp</title>
+
+<style>
+.container {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: #3498DB;
+    color: white;
+    width: 80%;
+    border-radius: 8px;
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.flex-child {
+    flex: 1;
+    margin-top: 20px;
+}
+
+.flex-child:first-child {
+    margin-right: 20px;
+}
+
+.hero-form {
+    display: inline-block;
+    margin-top: 20px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div align="middle">
+    <h2>Custom OpenDota API</h2>
+    <p><b>Login at:</b> {{ sgt_dt }}</p>
+    <br>
+    <h3>View Match Leaderboard</h3>
+    <div class="container d-flex" style="height: 150px;">
+        <div class="flex-child">
+            <h4>Standard</h4>
+            <form action="#" method="post">
+            <label>Enter match ID: </label>
+            <input type="text" name="m_id" />
+            <br>
+            <label for="timeframe">Select timeframe:</label>
+            <select name="timeframe" id="timeframe">
+                <option value="all-time">All time</option>
+                <option value="last-week">Last week</option>
+                <option value="last-month">Last month</option>
+                <option value="three-month">Last 3 months</option>
+                <option value="six-month">Last 6 months</option>
+                <option value="twelve-month">Last 12 months</option>
+            </select>
+            <input type="submit" value="Search" />
+            </form>
+        </div>
+        <div class="flex-child">
+            <h4>Custom</h4>
+            <form action="#" method="post">
+            <label>Enter match ID: </label>
+            <input type="text" name="custom_m_id" />
+            <br>
+            <label>Custom timeframe:</label>
+            <input type="date" name="custom_date" value="2022-11-06" />
+            <input type="submit" value="Search" />
+            </form>
+        </div>
+    </div>
+    <br>
+    <h3>Recommend Me A Hero</h3>
+    <div class="container" style="height: 70px;">
+        <form class="hero-form" action="#" method="post">
+            <label>Enter player ID: </label>
+            <input type="text" name="p_id" />
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+</div>
+{% endblock %}
