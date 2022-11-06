@@ -56,5 +56,5 @@ The application will take the highest ratio as your recommended hero. However, I
 In addition, I performed my API calls via asynchronous approach with `asyncio` and `aiohttp` modules. Generally, API calls via Python are synchronous with `requests` module. However, with `asyncio` and `aiohttp` modules, I am able to perform my API calls much effectively where API calls are in an event loop. This speeds up my API call performance, tackling limitations of calling multiple API calls. This allows me to retrieve leaderboard data and rendering of `leaderboard.html` faster, reducing waiting time from about 12 seconds to about 2 seconds for 10 API calls. I believe such enhancements are important especially when requesting multiple API calls.
 
 ### 5. What are some features you would like to add to the application?
--TBC-
-Recommend possible hero for players to use in categories such as Support, Carry, Jungler etc. by utilising data of player's playing style and performance through machine learning algorithm?
+- Alert players on their gameplay performance by using player's playing style data such as gold per min and last hits. This can be used to an indicator for players whether they are underperforming or outperforming and which aspects of playing attributes they should worked on.
+- Suggest a hero for players in a team setting such as Support, Carry, Jungler etc.
